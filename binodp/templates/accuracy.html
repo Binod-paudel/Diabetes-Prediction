@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}accuracy{% endblock title %}
+
+{% block body %}
+{% load static %}
+<style>
+    .content-container {
+        max-width: 1000px;
+        margin-left: 500px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .model-container {
+        display: flex;
+        justify-content: space-between; 
+        margin-bottom: 20px;
+    }
+
+    .model-details {
+        flex: 1;
+        max-width: 45%; 
+        text-align: left;
+        margin: 0 auto; 
+    }
+
+    @media only screen and (max-width: 768px) {
+        .model-container {
+            flex-direction: column; 
+        }
+    }
+</style>
+
+<body>
+    <div class="content-container">
+        <h1 style="text-align:center;">Model Accuracy</h1>
+        <div class="model-container">
+            <div class="model-details">
+                <h2>SVM:</h2>
+                <p>Precision: {{ pre }}</p>
+                <p>Recall: {{ rec }}</p>
+                <p>F1 Score: {{ fscor }}</p>
+                <p>Accuracy: {{ acc }}</p>
+            </div>
+            <div class="model-details">
+                <h2>LR:</h2>
+                <p>Precision: {{ pre1 }}</p>
+                <p>Recall: {{ rec1 }}</p>
+                <p>F1 Score: {{ fscor1 }}</p>
+                <p>Accuracy: {{ acc1 }}</p>
+            </div>
+        </div>
+        <img src="{% static 'bargraph.png' %}" alt="Comparison of SVM and LR Models">
+        <img src="{% static 'col.jpg' %}" alt="Comparison of SVM and LR Models">
+    </div>
+</body>
+{% endblock body %}
